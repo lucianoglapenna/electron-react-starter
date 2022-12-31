@@ -1,0 +1,6 @@
+{
+  "files": [
+    "build/**/*"
+  ],
+  "appId": "com.example.app"
+}
