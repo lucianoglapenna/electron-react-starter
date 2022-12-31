@@ -5,11 +5,13 @@ import './App.css';
 function App() {
   const [count, setCount] = useState(0);
 
+  console.log(import.meta.env.MODE);
+
   return (
     <div className="App">
       <div>
         <a href="https://vitejs.dev" target="_blank">
-          <img src="vite.svg" className="logo" alt="Vite logo" />
+          <img src="./vite.svg" className="logo" alt="Vite logo" />
         </a>
         <a href="https://reactjs.org" target="_blank">
           <img src={reactLogo} className="logo react" alt="React logo" />
@@ -18,13 +20,10 @@ function App() {
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+          count is {count} {import.meta.env.MODE} {import.meta.env.VITE_VAR}
         </button>
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-        <p>
-          Environment mode: <u>{process.env.NODE_ENV}</u>
         </p>
       </div>
       <p className="read-the-docs">
