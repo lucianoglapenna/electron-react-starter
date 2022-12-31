@@ -2,13 +2,17 @@
   "name": "electron-react-starter",
   "private": true,
   "version": "0.0.0",
-  "main": "dist/index.js",
+  "main": "build/main.js",
   "scripts": {
-    "dev": "vite",
-    "build:renderer": "tsc --project tsconfig.json && vite build --base=./",
-    "build:main": "tsc --build tsconfig.main.json",
-    "build": "npm run build:main && npm run build:renderer",
-    "preview": "vite preview"
+    "dev:web": "vite",
+    "dev": "concurrently 'vite' 'wait-on tcp:5173 && npm run watch:main'",
+    "watch:main": "nodemon --watch electron -e ts,json --exec 'npm run build:main && electron .'",
+    "start": "npm run build && electron .",
+    "build:main": "tsc --project tsconfig.electron.json",
+    "build:renderer": "tsc --project tsconfig.json && vite build",
+    "build": "npm run build:main && npm run build:renderer --",
+    "lint": "eslint .",
+    "package": "npm run build && electron-builder --config electron.build.json"
   },
   "dependencies": {
     "react": "^18.2.0",
