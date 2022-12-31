@@ -1,3 +1,9 @@
+const RULE = {
+  OFF: 0,
+  WARN: 1,
+  ERROR: 2,
+};
+
 module.exports = {
   env: {
     browser: true,
@@ -19,5 +25,7 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react', '@typescript-eslint'],
-  rules: {},
+  rules: {
+    'react/react-in-jsx-scope': RULE.OFF,
+  },
 };
