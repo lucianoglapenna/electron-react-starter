@@ -1,5 +1,5 @@
 import { app, BrowserWindow } from 'electron';
-import { resolve } from 'node:path';
+import resolveFile from './utils/resolveFile';
 
 const createWindow = () => {
   const win = new BrowserWindow({
@@ -7,7 +7,7 @@ const createWindow = () => {
     height: 600,
   });
 
-  win.loadFile(resolve(__dirname, 'app/index.html'));
+  win.loadURL(resolveFile());
 };
 
 app.whenReady().then(() => {
