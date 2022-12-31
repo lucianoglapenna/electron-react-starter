@@ -1,5 +1,5 @@
 import { resolve } from 'node:path';
-import { isDevelopment, port } from '../config';
+import { isDevelopment, devPort } from '../config';
 
 /**
  * Creates an URL/URI to use in the `loadURL` function of Electron window
@@ -8,7 +8,7 @@ import { isDevelopment, port } from '../config';
  */
 export default function resolveFile(fileName = 'index.html') {
   if (isDevelopment()) {
-    const url = new URL(`http://localhost:${port}`);
+    const url = new URL(`http://localhost:${devPort}`);
 
     return url.href;
   } else {
